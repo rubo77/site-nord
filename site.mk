@@ -22,7 +22,7 @@ GLUON_REGION ?= eu
 GLUON_WLAN_MESH ?= 11s
 
 GLUON_LANGS ?= en de
-GLUON_DEPRECATED ?= 0
+GLUON_DEPRECATED ?= full
 
 # for feature packs see https://github.com/freifunk-gluon/gluon/blob/v2018.2.x/package/features
 GLUON_FEATURES := \
@@ -165,6 +165,11 @@ FAT_PACKAGES := \
 	tcpdump \
 	gre \
 	wireguard
+# zram-swap for tiny devices
+ifeq ($(GLUON_TARGET),ar71xx-tiny)
+GLUON_SITE_PACKAGES += zram-swap
+endif
+
 
 # add addition network drivers and usb stuff only to targets where disk space does not matter
 ifeq ($(GLUON_TARGET),$(filter $(GLUON_TARGET),x86-generic x86-64)) 
