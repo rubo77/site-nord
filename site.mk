@@ -1,4 +1,4 @@
-# site.mk for Freifunk Nord Kreis Steinburg
+# site.mk for Freifunk Nord Kreis Dithmarschen
 
 # Always call `make` from the command line with the desired release version!
 # otherwise this is generated:
