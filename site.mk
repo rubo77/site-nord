@@ -30,10 +30,8 @@ GLUON_FEATURES := \
 	web-private-wifi \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
-	ebtables-limit-arp \
 	mesh-batman-adv-15 \
 	mesh-vpn-fastd \
-	radvd \
 	radv-filterd \
 	respondd \
 	status-page \
@@ -80,6 +78,7 @@ GLUON_SITE_PACKAGES += \
 ifeq ($(GLUON_TARGET),ar71xx-tiny)
 	GLUON_tp-link-tl-wr841n-nd-v7_SITE_PACKAGES = -ffffm-button-bind
 endif
+
 # a5-v11 gets too large
 ifeq ($(GLUON_TARGET),ramips-rt305x)
 	GLUON_a5-v11_SITE_PACKAGES += \
@@ -165,11 +164,11 @@ FAT_PACKAGES := \
 	tcpdump \
 	gre \
 	wireguard
+
 # zram-swap for tiny devices
 ifeq ($(GLUON_TARGET),ar71xx-tiny)
-GLUON_SITE_PACKAGES += zram-swap
+	GLUON_SITE_PACKAGES += zram-swap
 endif
-
 
 # add addition network drivers and usb stuff only to targets where disk space does not matter
 ifeq ($(GLUON_TARGET),$(filter $(GLUON_TARGET),x86-generic x86-64)) 
@@ -208,6 +207,10 @@ ifeq ($(GLUON_TARGET),ar71xx-generic)
 	GLUON_buffalo-wzr-hp-g300nh_SITE_PACKAGES := $(USB_PACKAGES_STORAGE)
 	GLUON_tp-link-archer-c7-v2_SITE_PACKAGES := $(USB_PACKAGES_STORAGE)
 	GLUON_gl-ar300m_SITE_PACKAGES := $(USB_PACKAGES_STORAGE)
+endif
+
+ifeq ($(GLUON_TARGET),ramips-mt76x8)
+	GLUON_netgear-r6120_SITE_PACKAGES := $(USB_PACKAGES_STORAGE)
 endif
 
 ifeq ($(GLUON_TARGET),mpc85xx-generic)
