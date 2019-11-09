@@ -22,7 +22,7 @@ GLUON_REGION ?= eu
 GLUON_WLAN_MESH ?= 11s
 
 GLUON_LANGS ?= en de
-GLUON_DEPRECATED ?= full
+GLUON_DEPRECATED ?= upgrade
 
 # for feature packs see https://github.com/freifunk-gluon/gluon/blob/v2018.2.x/package/features
 GLUON_FEATURES := \
